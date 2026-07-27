@@ -1,18 +1,18 @@
 (function () {
   'use strict';
 
-  var TABS = ['Notes', 'Replies', 'Media', 'Saved'];
+  var TABS = ['ノート', '返信', 'メディア', '保存済み'];
 
   var POSTS = [
-    { when: '2m', body: 'Found this one on the way north — a curved cedar bench and a lake view that makes the whole trip worth it. The sign says "kōryū sauna."', photo: './assets/sauna-lounge.png', replies: 12, reposts: 4, likes: 189, saves: 38 },
-    { when: '4m', body: 'Lakeside sauna in Hakone this weekend — the kind of window seat where you stop checking the clock. Wood stove kept going the whole time.', photo: './assets/sauna-lake.png', replies: 14, reposts: 5, likes: 203, saves: 47 },
-    { when: '15m', body: 'Sauna round three. The rain outside the window in the last room is doing more for me than any of the actual heat.', photo: './assets/sauna-post.png', replies: 9, reposts: 3, likes: 156, saves: 34 },
-    { when: '30m', body: 'Ended up talking to two strangers for an hour straight, wrapped in towels, watching the light change over the water. This is the whole reason I go.', photo: './assets/sauna-friends.png', replies: 20, reposts: 7, likes: 298, saves: 61 },
-    { when: '1h', body: 'A friend visiting from Finland finally got me into a proper wood-fired sauna. She laughed the whole time at how seriously I was taking the vihta.', photo: './assets/sauna-group.png', replies: 18, reposts: 6, likes: 271, saves: 52 },
-    { when: '2h', body: 'The sentō on the corner reopened after the tiler retired. New owner kept the koi mural but painted the ceiling the color of hōjicha. I stayed until my fingers pruned.', placeholder: 'PHOTO · sentō ceiling', replies: 24, reposts: 8, likes: 412, saves: 63 },
-    { when: '6h', body: 'Reading list for July — three books, one field guide, and a stack of neighborhood zines I picked up at the coin laundry.', replies: 4, reposts: 2, likes: 88, saves: 41 },
-    { when: '1d', body: 'Reposting because I keep coming back to this all week:', quote: { author: 'Kōji Tabata', handle: '@koji.walks', body: 'The neighborhood laundromat at 6am is the closest I get to feeling like the city is mine.' }, replies: 11, reposts: 32, likes: 240, saves: 88 },
-    { when: '2d', body: "Question for anyone who lives near a river — what's the best small bridge in your neighborhood? Photos welcome.", placeholder: 'PHOTO · bridge, dusk', replies: 61, reposts: 4, likes: 174, saves: 22 },
+    { when: '2分前', body: '北へ向かう途中で見つけたここ。カーブした杉のベンチと湖の眺めが、旅の疲れを全部忘れさせてくれる。看板には「交流サウナ」と書いてあった。', photo: './assets/sauna-lounge.png', replies: 12, reposts: 4, likes: 189, saves: 38 },
+    { when: '4分前', body: '今週末は箱根の湖畔サウナ。時計を見るのをやめてしまうような窓際の席だった。薪ストーブがずっと焚かれていた。', photo: './assets/sauna-lake.png', replies: 14, reposts: 5, likes: 203, saves: 47 },
+    { when: '15分前', body: 'サウナ三セット目。最後の部屋の窓の外の雨音のほうが、実際の熱よりも効いている気がする。', photo: './assets/sauna-post.png', replies: 9, reposts: 3, likes: 156, saves: 34 },
+    { when: '30分前', body: 'タオルにくるまりながら、見知らぬ二人と1時間ぶっ通しで話し込んでしまった。水面の光が変わっていくのを眺めながら。これがサウナに行く理由そのもの。', photo: './assets/sauna-friends.png', replies: 20, reposts: 7, likes: 298, saves: 61 },
+    { when: '1時間前', body: 'フィンランドから遊びに来た友人に、ついに本格的な薪サウナに連れて行ってもらった。ヴィヒタの扱いに真剣になりすぎている私を見てずっと笑っていた。', photo: './assets/sauna-group.png', replies: 18, reposts: 6, likes: 271, saves: 52 },
+    { when: '2時間前', body: '角の銭湯、タイル職人さんが引退したあとに再開した。新しいオーナーは鯉の壁画を残しつつ、天井をほうじ茶色に塗り替えていた。指がふやけるまで居座ってしまった。', placeholder: '写真・銭湯の天井', replies: 24, reposts: 8, likes: 412, saves: 63 },
+    { when: '6時間前', body: '7月の読書リスト — 本3冊、フィールドガイド1冊、それとコインランドリーで拾ってきた近所のZINEの束。', replies: 4, reposts: 2, likes: 88, saves: 41 },
+    { when: '1日前', body: '今週ずっと読み返してしまうのでリポスト:', quote: { author: '田畑光二', handle: '@koji.walks', body: '朝6時の近所のコインランドリーにいるときが、いちばんこの街が自分のものだと感じられる瞬間。' }, replies: 11, reposts: 32, likes: 240, saves: 88 },
+    { when: '2日前', body: '川の近くに住んでいる方に質問です — ご近所で一番好きな小さい橋はどこですか？写真も大歓迎。', placeholder: '写真・橋、夕暮れ', replies: 61, reposts: 4, likes: 174, saves: 22 },
   ];
 
   var state = {
@@ -49,7 +49,7 @@
   }
 
   function renderFollow() {
-    followBtn.textContent = state.following ? 'Following' : 'Follow';
+    followBtn.textContent = state.following ? 'フォロー中' : 'フォロー';
     followBtn.classList.toggle('following', state.following);
   }
 
@@ -111,14 +111,14 @@
 
       var authorBlock = el('div', 'post-author-block');
       var authorLine = el('div', 'post-author-line');
-      authorLine.appendChild(el('span', 'post-name', { text: 'Sanae Ito' }));
+      authorLine.appendChild(el('span', 'post-name', { text: '伊藤早苗' }));
       authorLine.appendChild(el('span', 'post-handle', { text: '@sanae.notes' }));
       authorLine.appendChild(el('span', 'post-dot', { text: '·' }));
       authorLine.appendChild(el('span', 'post-time', { text: post.when }));
       authorBlock.appendChild(authorLine);
       header.appendChild(authorBlock);
 
-      var moreBtn = el('button', 'post-more-btn', { type: 'button', 'aria-label': 'More' });
+      var moreBtn = el('button', 'post-more-btn', { type: 'button', 'aria-label': 'その他' });
       moreBtn.innerHTML = ICONS.more;
       header.appendChild(moreBtn);
 
